@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ipinfos.factory.lidaa_ipinfos.class">Lidaa\IpInfosBundle\IpInfos\Factory\IpInfosFactory</parameter>
+        <parameter key="templating.helper.lidaa_ipinfos.class">Lidaa\IpInfosBundle\Templating\Helper\IpInfosHelper</parameter>
+        <parameter key="twig.extension.lidaa_ipinfos.class">Lidaa\IpInfosBundle\Twig\Extension\IpInfosExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="ipinfos.factory.lidaa_ipinfos" class="%ipinfos.factory.lidaa_ipinfos.class%">
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="templating.helper.lidaa_ipinfos" class="%templating.helper.lidaa_ipinfos.class%" >
+            <tag name="templating.helper" />
+            <argument type="service" id="ipinfos.factory.lidaa_ipinfos" />
+        </service>
+
+        <service id="twig.extension.lidaa_ipinfos" class="%twig.extension.lidaa_ipinfos.class%" >
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
+</container>
