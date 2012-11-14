@@ -42,7 +42,7 @@
 
     lidaa_ip_infos:
       type: ipinfodb        # ipinfodb OR ipaddresslabs
-      ip: ~                 # You can spacify an address IP
+      ip: ~                 # You can specify an address IP, if not, the address of user will used
       license_key: demo     # Your key licence
 
 ### Usage
